@@ -9,12 +9,16 @@ EXT_BASE_DIR="/var/lib/extensions"
 EXT_DIR="$EXT_BASE_DIR/$EXT_NAME"
 LOCAL_EXT_DIR="$SCRIPT_DIR/$EXT_NAME"
 
+updated=false
 if [[ -e "$EXT_DIR" ]]; then
-    echo "System extension is already installed!"
-    exit 1
+    updated=true
 fi
 
 sudo mkdir -p "$EXT_BASE_DIR"
 sudo cp -r "$LOCAL_EXT_DIR" "$EXT_BASE_DIR"
 
-echo "Extension installed! Merge system extensions or reboot to make it available!"
+if "$updated"; then
+    echo "Extension updated! Merge system extensions or reboot to make it available!"
+else
+    echo "Extension installed! Merge system extensions or reboot to make it available!"
+fi
