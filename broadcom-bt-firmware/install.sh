@@ -18,7 +18,7 @@ sudo mkdir -p "$EXT_BASE_DIR"
 sudo cp -r "$LOCAL_EXT_DIR" "$EXT_BASE_DIR"
 
 if "$updated"; then
-    echo "Extension updated! Merge system extensions or reboot to make it available!"
+    echo "Extension updated! Reboot to make it available!"
 else
-    echo "Extension installed! Merge system extensions or reboot to make it available!"
+    echo "Extension installed! Reboot to make it available!"
 fi
