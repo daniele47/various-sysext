@@ -27,10 +27,12 @@ cp -r "$SCRIPT_DIR/broadcom-wl-dkms" "$BUILD_DIR"
 make -C "/lib/modules/$(uname -r)/build" "M=$(pwd)" modules
 
 # bundle the necessary files into a sysext
+mkdir -p "$SYSEXT_DIR/usr"
+cp -r "$BUILD_DIR/broadcom-wl-dkms/usr/lib" "$SYSEXT_DIR/usr/"
+cp -r "$BUILD_DIR/broadcom-wl-dkms/usr/share" "$SYSEXT_DIR/usr/"
 mkdir -p "$SYSEXT_DIR/usr/lib/modules/$KERNEL_VERSION/extra"
 mkdir -p "$SYSEXT_DIR/usr/lib/extension-release.d"
 cp "$BUILD_DIR/broadcom-wl-dkms/usr/src/broadcom-wl-6.30.223.271/wl.ko" "$SYSEXT_DIR/usr/lib/modules/$KERNEL_VERSION/extra"
-cp -r "$BUILD_DIR/broadcom-wl-dkms/usr/lib/modprobe.d" "$SYSEXT_DIR/usr/lib/"
-cp -r "$BUILD_DIR/broadcom-wl-dkms/usr/share" "$SYSEXT_DIR/usr/share"
 echo "ID=_any" > "$SYSEXT_DIR/usr/lib/extension-release.d/extension-release.broadcom-wl-dkms"
 
+echo -e "\e[1;32mEverything build correctly\e[m"
