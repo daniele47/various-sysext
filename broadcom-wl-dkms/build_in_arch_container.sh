@@ -22,6 +22,10 @@ rm -rf "$BUILD_DIR" "$ALL_SYSEXT_DIR"
 mkdir -p "$BUILD_DIR" "$SYSEXT_DIR"
 cp -r "$SCRIPT_DIR/broadcom-wl-dkms" "$BUILD_DIR"
 
+# hacky fix: makefile reqiures a lib file to build, which is required also at runtime
+sudo mkdir -p /usr/lib/broadcom-wl-dkms/
+sudo cp "$SCRIPT_DIR/broadcom-wl-dkms/usr/lib/broadcom-wl-dkms/wlc_hybrid.o_shipped" /usr/lib/broadcom-wl-dkms/wlc_hybrid.o_shipped
+
 # move into correct dir
 ! cd "$BUILD_DIR/broadcom-wl-dkms/usr/src/broadcom-wl-6.30.223.271" && echo 'failed to enter correct dir' && exit 1
 make -C "/lib/modules/$(uname -r)/build" "M=$(pwd)" modules

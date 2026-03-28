@@ -145,10 +145,7 @@ ifeq "$(GE_49)" "1"
 ccflags-y          += -Wno-date-time
 endif
 
-### PERSONAL FIX TO ALLOW BUILDING ###
-ldflags-y          := $(src)/../../lib/broadcom-wl-dkms/wlc_hybrid.o_shipped
-# ldflags-y          := /usr/lib/broadcom-wl-dkms/wlc_hybrid.o_shipped
-### END PERSONAL FIX ###
+ldflags-y          := /usr/lib/broadcom-wl-dkms/wlc_hybrid.o_shipped
 
 KBASE              ?= /lib/modules/`uname -r`
 KBUILD_DIR         ?= $(KBASE)/build
