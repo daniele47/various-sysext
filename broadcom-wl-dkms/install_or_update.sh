@@ -27,7 +27,7 @@ cp -r "$SCRIPT_DIR/broadcom-wl-dkms" "$BUILD_DIR"
 
 # move into correct dir
 ! cd "$BUILD_DIR/broadcom-wl-dkms/usr/src/broadcom-wl-6.30.223.271" && echo 'failed to enter correct dir' && exit 1
-make -C "/lib/modules/$(uname -r)/build" "M=$(pwd)" modules 2>&1 | while read -r line; do echo -ne "\r\e[K$line"; done && echo -ne "\r\e[K"
+make -C "/lib/modules/$(uname -r)/build" "M=$(pwd)" modules
 
 # bundle the necessary files into a sysext
 mkdir -p "$SYSEXT_DIR/usr/lib/modules/$KERNEL_VERSION/extra"
