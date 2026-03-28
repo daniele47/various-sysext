@@ -39,4 +39,6 @@ mkdir -p "$SYSEXT_DIR/usr/lib/extension-release.d"
 cp "$BUILD_DIR/broadcom-wl-dkms/usr/src/broadcom-wl-6.30.223.271/wl.ko" "$SYSEXT_DIR/usr/lib/modules/$KERNEL_VERSION/extra"
 echo "ID=_any" > "$SYSEXT_DIR/usr/lib/extension-release.d/extension-release.broadcom-wl-dkms"
 
+sudo depmod -b "$SYSEXT_DIR/usr" "$KERNEL_VERSION"
+
 echo -e "\e[1;32mEverything build correctly\e[m"
