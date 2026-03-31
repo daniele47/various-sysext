@@ -11,6 +11,7 @@ LOCAL_EXT_DIR="$SCRIPT_DIR/$EXT_NAME"
 
 updated=false
 if [[ -e "$EXT_DIR" ]]; then
+    sudo rm -rf "$EXT_DIR"
     updated=true
 fi
 
