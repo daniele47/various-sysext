@@ -17,6 +17,8 @@ fi
 sudo mkdir -p "$EXT_BASE_DIR"
 sudo cp -r "$LOCAL_EXT_DIR" "$EXT_BASE_DIR"
 
+echo 'blacklist btusb' | sudo tee /etc/modprobe.d/broadcom-bt-firmware-disable-for-safety.conf >/dev/null
+
 if "$updated"; then
     echo "Extension updated! Reboot to make it available!"
 else

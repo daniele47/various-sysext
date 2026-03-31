@@ -9,5 +9,6 @@ if [[ ! -e "$EXT_DIR" ]]; then
     exit 1
 fi
 
+sudo rm -f "/etc/modprobe.d/broadcom-bt-firmware-disable-for-safety.conf"
 sudo rm -rf "$EXT_DIR"
 echo "System extension has been uninstalled!"
